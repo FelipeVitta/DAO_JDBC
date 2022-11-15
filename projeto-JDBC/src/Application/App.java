@@ -5,6 +5,8 @@ import model_dao.DaoFactory;
 import model_dao.SellerDao;
 import model_entities.Department;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.security.spec.ECFieldF2m;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,9 +20,18 @@ public class App {
         SellerDao sellerDao = DaoFactory.createSellerDao();
         Seller seller = sellerDao.findById(3);
 
+        System.out.println("\n======== seller FindById =======\n");
         System.out.println(seller);
+
+        System.out.println("\n======== seller FindByDeparment =======\n");
+
+        Department dep = new Department(1, null);
+        List<Seller> list = sellerDao.findByDepartment(dep);
+        for(Seller a : list){
+            System.out.println(a);
+        }
+
     
-     
     }
 
 }
