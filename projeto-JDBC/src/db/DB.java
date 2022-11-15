@@ -14,7 +14,9 @@ import java.sql.SQLException;
 
 public class DB {
 
-	public static Connection getConnection(Connection conn) {
+	private static Connection conn = null;
+
+	public static Connection getConnection() {
 		if (conn == null) {
 			try {
 				Properties props = loadProperties();
