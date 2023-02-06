@@ -2,6 +2,7 @@ package Application;
 
 import db.DB;
 import model_dao.DaoFactory;
+import model_dao.DepartmentDao;
 import model_dao.SellerDao;
 import model_entities.Department;
 import java.sql.Statement;
@@ -20,6 +21,7 @@ public class App {
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
         Seller seller = sellerDao.findById(3);
+        DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
         System.out.println("\n======== seller FindById =======\n"); //retorna um objeto seller
 
@@ -27,7 +29,7 @@ public class App {
 
         System.out.println("\n======== seller FindByDeparment =======\n"); //retorna uma lista de sellers
 
-        Department dep = new Department(1, null);
+        Department dep = new Department(6, null);
         List<Seller> list = sellerDao.findByDepartment(dep);
         for(Seller a : list){
             System.out.println(a);
@@ -39,22 +41,8 @@ public class App {
             System.out.println(a);
         }
 
-        System.out.println("\n======== insert seller =======\n"); //insere um novo seller
-        Seller seller2 = new Seller(null,"Gabriel Coelho","coelho@gmail.com",new Date(0), 3000.0, dep);
-        // sellerDao.insert(seller2);
-        // System.out.println("Inserido! Novo id = " + seller2.getId());
-
-        System.out.println("\n======== sellet update =======\n"); //atualiza um seller ja existente
-        // seller2 = sellerDao.findById(4);
-        // seller2.setName("Martolas");
-        // sellerDao.update(seller2);
-        // System.out.println("update completed");
-
-        System.out.println("\n======== delete seller =======\n"); //atualiza um seller ja existente
-
-        // sellerDao.deleteById(3);
-
-
+        departmentDao.deleteById(2);
+  
 
     }
 
